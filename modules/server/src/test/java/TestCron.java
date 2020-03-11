@@ -1,8 +1,5 @@
 import cn.hutool.cron.CronUtil;
 
-/**
- * Created by jiangzeyin on 2019/3/4.
- */
 public class TestCron {
     public static void main(String[] args) {
         String CRON_ID = "test";

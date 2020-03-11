@@ -7,9 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Created by jiangzeyin on 2019/4/22.
- */
+
 public class TestFile {
     public static void main(String[] args) throws IOException {
         InputStream inputStream = new FileInputStream("D:\\SystemDocument\\Desktop\\Desktop.zip");

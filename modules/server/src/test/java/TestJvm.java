@@ -9,9 +9,7 @@ import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by jiangzeyin on 2019/4/4.
- */
+
 public class TestJvm {
     public static void main(String[] args) throws IOException, AttachNotSupportedException, MonitorException, URISyntaxException {
 //        System.out.println(getPid());

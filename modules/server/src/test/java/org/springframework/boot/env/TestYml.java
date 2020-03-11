@@ -6,10 +6,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author bwcx_jzy
- * @date 2019/8/17
- */
 public class TestYml {
 
     public static void main(String[] args) throws IOException {

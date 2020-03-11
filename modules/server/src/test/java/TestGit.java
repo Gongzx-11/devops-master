@@ -12,10 +12,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author bwcx_jzy
- * @date 2019/7/9
- **/
+
 public class TestGit {
 
 

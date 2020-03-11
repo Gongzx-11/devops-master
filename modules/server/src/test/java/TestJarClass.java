@@ -3,9 +3,7 @@ import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 
-/**
- * Created by jiangzeyin on 2019/4/13.
- */
+
 public class TestJarClass {
     public static void main(String[] args) throws IOException {
 //        URLClassLoader jarClassLoader = JarClassLoader.loadJarToSystemClassLoader(new File("D:/dev/sdfasdf"));

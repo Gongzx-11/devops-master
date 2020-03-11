@@ -12,10 +12,7 @@ import org.eclipse.jgit.util.FS;
 
 import java.io.File;
 
-/**
- * @author bwcx_jzy
- * @date 2019/7/10
- **/
+
 public class TestSshGit {
     public static void main(String[] args) throws GitAPIException {
         Git.cloneRepository()

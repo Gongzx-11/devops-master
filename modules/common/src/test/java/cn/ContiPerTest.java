@@ -9,10 +9,7 @@ import org.junit.Test;
 
 import java.util.UUID;
 
-/**
- * @author bwcx_jzy
- * @date 2019/9/3
- */
+
 public class ContiPerTest {
     @Rule
     public ContiPerfRule i = new ContiPerfRule();

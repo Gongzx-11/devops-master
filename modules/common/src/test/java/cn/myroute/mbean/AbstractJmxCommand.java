@@ -14,10 +14,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.function.Consumer;
 
-/**
- * @author bwcx_jzy
- * @date 2019/8/5
- */
+
 public class AbstractJmxCommand {
     private static final String CONNECTOR_ADDRESS =
             "com.sun.management.jmxremote.localConnectorAddress";

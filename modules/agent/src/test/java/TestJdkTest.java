@@ -1,10 +1,7 @@
 import gzx.devops.util.FileUtils;
 import org.junit.Test;
 
-/**
- * @author bwcx_jzy
- * @date 2019/10/30
- */
+
 public class TestJdkTest {
 
     @Test

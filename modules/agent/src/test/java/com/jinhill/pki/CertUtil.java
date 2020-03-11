@@ -54,7 +54,7 @@ public class CertUtil {
      */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        InputStream inputStream = ResourceUtil.getStream("D:\\jpom\\agent\\data\\temp\\系统管理员\\sdfasdf\\example.com.csr");
+        InputStream inputStream = ResourceUtil.getStream("D:\\devops\\agent\\data\\temp\\系统管理员\\sdfasdf\\example.com.csr");
         getSubjectDN(inputStream);
     }
 }

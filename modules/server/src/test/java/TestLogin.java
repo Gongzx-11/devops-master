@@ -1,9 +1,6 @@
 import cn.hutool.http.HttpUtil;
 
-/**
- * @author bwcx_jzy
- * @date 2019/7/15
- */
+
 public class TestLogin {
     public static void main(String[] args) {
         while (true) {

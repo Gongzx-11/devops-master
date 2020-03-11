@@ -1,9 +1,6 @@
 import org.springframework.util.AntPathMatcher;
 
-/**
- * @author bwcx_jzy
- * @date 2019/8/24
- */
+
 public class TestPath {
 
     public static void main(String[] args) {

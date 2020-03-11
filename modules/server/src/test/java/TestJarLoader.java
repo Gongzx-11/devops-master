@@ -10,10 +10,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
-/**
- * @author bwcx_jzy
- * @date 2019/7/23
- **/
+
 public class TestJarLoader {
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         JarFile jarFile1 = new JarFile(new File("D:\\Idea\\Jpom\\modules\\agent\\target\\agent-2.4.2.jar"));

@@ -7,10 +7,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
 
-/**
- * @author bwcx_jzy
- * @date 2019/8/26
- */
+
 public class TestFileModify {
     public static void main(String[] args) {
         File file = FileUtil.file("D:\\jpom\\server\\data\\mail_config.json");

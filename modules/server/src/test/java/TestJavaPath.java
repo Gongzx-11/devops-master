@@ -3,10 +3,7 @@ import org.junit.Test;
 
 import java.util.Map;
 
-/**
- * @author bwcx_jzy
- * @date 2019/9/28
- */
+
 public class TestJavaPath {
 
     @Test

@@ -6,9 +6,7 @@ import cn.hutool.crypto.asymmetric.RSA;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-/**
- * Created by jiangzeyin on 2019/3/7.
- */
+
 public class TestCert {
     public static void main(String[] args) {
 //        HttpRequest request = HttpUtil.createPost("https://myssl.com/api/v1/tools/cert_decode");
