@@ -8,7 +8,7 @@
     </formats>
 
     <fileSets>
-        <!-- 打包管理命令文件-->
+        <!-- 打包管理命令文件222-->
         <fileSet>
             <directory>script/</directory>
             <outputDirectory>/</outputDirectory>
