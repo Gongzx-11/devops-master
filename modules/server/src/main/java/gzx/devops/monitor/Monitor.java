@@ -90,10 +90,10 @@ public class Monitor implements Task {
                 return;
             }
             //
-            List<String> notifyUser = monitorModel.getNotifyUser();
-            if (notifyUser == null || notifyUser.isEmpty()) {
-                return;
-            }
+//            List<String> notifyUser = monitorModel.getNotifyUser();
+//            if (notifyUser == null || notifyUser.isEmpty()) {
+//                return;
+//            }
             this.checkNode(monitorModel);
         });
     }
@@ -221,7 +221,15 @@ public class Monitor implements Task {
         monitorService.setAlarm(monitorNotifyLog.getMonitorId(), !monitorNotifyLog.isStatus());
         UserService userService = SpringUtil.getBean(UserService.class);
         // 发送通知
+        System.out.println("****************************");
+        System.out.println("****************************");
+        System.out.println("(monitorNotifyLog.getTitle()"+ monitorNotifyLog.getTitle());
+        System.out.println("(monitorNotifyLog.getTitle()"+ monitorNotifyLog.getTitle());
+        System.out.println("****************************");
+        System.out.println("****************************");
+
         if (monitorNotifyLog.getTitle() != null) {
+
             notify.forEach(notifyUser -> {
                 UserModel item = userService.getItem(notifyUser);
                 boolean success = false;
@@ -266,13 +274,19 @@ public class Monitor implements Task {
                 if (success) {
                     return;
                 }
-                monitorNotifyLog.setLogId(IdUtil.fastSimpleUUID());
-                monitorNotifyLog.setNotifyObject("报警联系人异常");
-                monitorNotifyLog.setNotifyStyle(MonitorModel.NotifyType.mail.getCode());
-                monitorNotifyLog.setNotifyStatus(false);
-                monitorNotifyLog.setNotifyError("报警联系人异常:" + (item == null ? "联系人不存在" : ""));
-                dbMonitorNotifyLogService.insert(monitorNotifyLog);
+//                monitorNotifyLog.setLogId(IdUtil.fastSimpleUUID());
+//                monitorNotifyLog.setNotifyObject("报警联系人异常");
+//                monitorNotifyLog.setNotifyStyle(MonitorModel.NotifyType.mail.getCode());
+//                monitorNotifyLog.setNotifyStatus(false);
+//                monitorNotifyLog.setNotifyError("报警联系人异常:" + (item == null ? "联系人不存在" : ""));
+//                dbMonitorNotifyLogService.insert(monitorNotifyLog);
             });
+            monitorNotifyLog.setLogId(IdUtil.fastSimpleUUID());
+            monitorNotifyLog.setNotifyObject("报警联系人异常");
+            monitorNotifyLog.setNotifyStyle(MonitorModel.NotifyType.mail.getCode());
+            monitorNotifyLog.setNotifyStatus(false);
+//            monitorNotifyLog.setNotifyError("报警联系人异常:" + (item == null ? "联系人不存在" : ""));
+            dbMonitorNotifyLogService.insert(monitorNotifyLog);
         }
     }
 

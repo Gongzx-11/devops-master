@@ -152,9 +152,9 @@ public class MonitorListController extends BaseServerController {
 
         JSONArray jsonArray = JSONArray.parseArray(notifyUser);
         List<String> notifyUsers = jsonArray.toJavaList(String.class);
-        if (notifyUsers == null || notifyUsers.isEmpty()) {
-            return JsonMessage.getString(405, "请选择报警联系人");
-        }
+//        if (notifyUsers == null || notifyUsers.isEmpty()) {
+//            return JsonMessage.getString(405, "请选择报警联系人");
+//        }
         String projects = getParameter("projects");
         JSONArray projectsArray = JSONArray.parseArray(projects);
         if (projectsArray == null || projectsArray.size() <= 0) {

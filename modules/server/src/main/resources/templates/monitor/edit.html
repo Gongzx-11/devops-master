@@ -113,11 +113,11 @@
                 layer.msg("请至少选择一个项目");
                 return false;
             }
-            var notifyUser = transfer.getData('notifyUser');
-            if (!notifyUser || notifyUser.length <= 0) {
-                layer.msg("请至少选择一个通知人");
-                return false;
-            }
+            // var notifyUser = transfer.getData('notifyUser');
+            // if (!notifyUser || notifyUser.length <= 0) {
+            //     layer.msg("请至少选择一个通知人");
+            //     return false;
+            // }
             var notifyUsers = [];
             for (var i = 0; i < notifyUser.length; i++) {
                 notifyUsers.push(notifyUser[i].value);
