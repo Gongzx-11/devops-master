@@ -95,7 +95,7 @@ public class OutGivingController extends BaseServerController {
         }
     }
 
-    private String addOutGiving(String id) throws IOException {
+    private String addOutGiving(String id) {
         OutGivingModel outGivingModel = outGivingServer.getItem(id);
         if (outGivingModel != null) {
             return JsonMessage.getString(405, "分发id已经存在啦");
@@ -111,7 +111,7 @@ public class OutGivingController extends BaseServerController {
         return error;
     }
 
-    private String updateGiving(String id) throws IOException {
+    private String updateGiving(String id) {
         OutGivingModel outGivingModel = outGivingServer.getItem(id);
         if (outGivingModel == null) {
             return JsonMessage.getString(405, "没有找到对应的分发id");
