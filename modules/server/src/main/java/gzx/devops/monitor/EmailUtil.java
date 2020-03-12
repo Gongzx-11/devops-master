@@ -61,6 +61,9 @@ public class EmailUtil implements INotify {
         mailAccount.setFrom(config.getFrom());
         mailAccount.setPort(config.getPort());
         mailAccount.setHost(config.getHost());
+        //超时
+        mailAccount.setTimeout(10 * 1000);
+        mailAccount.setConnectionTimeout(10 * 1000);
         //
         if (config.getSslEnable() != null && config.getSslEnable()) {
             mailAccount.setSslEnable(config.getSslEnable());
