@@ -56,7 +56,9 @@ public class NodeForward {
      * @param userModel  user
      * @return JSON
      */
-    public static JsonMessage request(NodeModel nodeModel, NodeUrl nodeUrl, UserModel userModel, JSONObject jsonObject) {
+//    public static JsonMessage request(NodeModel nodeModel, NodeUrl nodeUrl, UserModel userModel, JSONObject jsonObject) {
+    public static JsonMessage<String> request(NodeModel nodeModel, NodeUrl nodeUrl, UserModel userModel, JSONObject jsonObject) {
+
         return request(nodeModel, null, nodeUrl, true, userModel, jsonObject, null, null);
     }
 
@@ -70,7 +72,8 @@ public class NodeForward {
      * @param val       其他参数
      * @return JSON
      */
-    public static JsonMessage requestBySys(NodeModel nodeModel, NodeUrl nodeUrl, String pName, Object pVal, Object... val) {
+//    public static JsonMessage requestBySys(NodeModel nodeModel, NodeUrl nodeUrl, String pName, Object pVal, Object... val) {
+    public static <T> JsonMessage<T> requestBySys(NodeModel nodeModel, NodeUrl nodeUrl, String pName, Object pVal, Object... val) {
         return request(nodeModel, null, nodeUrl, false, null, null, pName, pVal, val);
     }
 

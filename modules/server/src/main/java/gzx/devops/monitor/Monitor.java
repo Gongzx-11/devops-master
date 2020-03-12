@@ -141,7 +141,8 @@ public class Monitor implements Task {
                         if (monitorModel.isAutoRestart()) {
                             // 执行重启
                             try {
-                                JsonMessage reJson = NodeForward.requestBySys(nodeModel, NodeUrl.Manage_Restart, "id", id);
+//                                JsonMessage reJson = NodeForward.requestBySys(nodeModel, NodeUrl.Manage_Restart, "id", id);
+                                JsonMessage<String> reJson = NodeForward.requestBySys(nodeModel, NodeUrl.Manage_Restart, "id", id);
                                 if (reJson.getCode() == HttpStatus.HTTP_OK) {
                                     // 重启成功
                                     runStatus = true;

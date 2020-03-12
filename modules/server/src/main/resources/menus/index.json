@@ -48,29 +48,29 @@
       }
     ]
   },
-//  {
-//    "title": "节点分发",
-//    "icon": "layui-icon-release",
-//    "childs": [
-//      {
-//        "id": "outgiving",
-//        "title": "分发列表",
-//        "url": "./outgiving/list.html"
-//      },
-//      {
-//        "id": "outgivingLog",
-//        "title": "分发日志",
-//        "url": "./outgiving/log.html",
-//        "dynamic": "showOutGiving"
-//      },
-//      {
-//        "id": "outgivingWhitelistDirectory",
-//        "title": "分发白名单",
-//        "url": "./outgiving/whitelistDirectory.html",
-//        "dynamic": "showOutGiving"
-//      }
-//    ]
-//  },
+  {
+    "title": "节点分发",
+    "icon": "layui-icon-release",
+    "childs": [
+      {
+        "id": "outgiving",
+        "title": "分发列表",
+        "url": "./outgiving/list.html"
+      },
+      {
+        "id": "outgivingLog",
+        "title": "分发日志",
+        "url": "./outgiving/log.html",
+        "dynamic": "showOutGiving"
+      },
+      {
+        "id": "outgivingWhitelistDirectory",
+        "title": "分发白名单",
+        "url": "./outgiving/whitelistDirectory.html",
+        "dynamic": "showOutGiving"
+      }
+    ]
+  },
   {
     "title": "监控管理",
     "icon": "layui-icon-chart-screen",

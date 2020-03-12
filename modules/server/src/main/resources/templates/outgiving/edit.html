@@ -33,7 +33,8 @@
                            th:class="${item}?'layui-input layui-disabled':'layui-input'" th:value="${item?.id}"
                            th:readonly="${item}">
                     <input type="hidden" name="reqId" th:value="${reqId}">
-                    <input type="hidden" name="type" value="${type}">
+<!--                    <input type="hidden" name="type" value="${type}">-->
+                    <input type="hidden" name="type" th:value="${type}">
                 </div>
             </div>
             <div class="layui-inline">
@@ -51,6 +52,19 @@
             </a>
         </div>
 
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">分发后</label>
+                <div class="layui-input-block">
+                    <select name="afterOpt" id="afterOpt">
+                        <option value="">请选择分发后的操作</option>
+                        <option th:each="sel : ${afterOpt}" th:value="${sel.code}"
+                                th:selected="${sel.code==item?.afterOpt}" th:text="${sel.desc}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
         <div class="layui-form-item"
              style="padding-left: 20%;padding-top: 20px;">
