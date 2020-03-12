@@ -10,7 +10,7 @@ spring:
   application:
     name: devopsServer
   profiles:
-    active: pro
+    active: dev
   #thymeleaf start
   thymeleaf:
     mode: HTML
