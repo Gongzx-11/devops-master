@@ -78,7 +78,7 @@ public class SshHandler extends BaseHandler {
         } else {
             // 查看文件
             tail = FileUtil.normalize(tail);
-            this.call(session, StrUtil.format("tail -f {}", tail));
+            this.call(session, StrUtil.format("cat {}", tail));
             this.call(session, StrUtil.CR);
         }
     }
