@@ -38,14 +38,20 @@
 <table class="layui-table" id="table" lay-filter="table" style="margin: 0;"></table>
 </body>
 <script type="text/html" id="bar_monitor">
-        <a href="javascript:;" class="layui-btn  layui-btn-sm  layui-btn-warm" lay-event="terminal">终端</a>
-        {{# if(!d.path){ }}
+    {{# if(!d.path){ }}
     <a href="javascript:;" class="layui-btn  layui-btn-sm  layui-btn-danger" lay-event="delete">删除</a>
-        <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="rename">重命名</a>
-        {{# } }}
+        <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="rename">更名</a>
+    {{# } }}
+    {{# if(!d.dir && !d.gz && !d.tar && !d.zip && !d.rar){ }}
+    <a href="javascript:;" class="layui-btn  layui-btn-sm  layui-btn-warm" lay-event="terminal">终端</a>
+    {{# } }}
     {{# if(!d.dir){ }}
     <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="download">下载</a>
-        <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="compress">解压</a>
+    {{# } }}
+
+    {{# if(d.gz || d.tar || d.zip || d.rar){ }}
+<!--|| if(d.zip){ } || if(d.tar){ } || if(d.rar){ }-->
+    <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="compress">解压</a>
     {{# } }}
 <!--        <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="test">解压</a>-->
 </script>
@@ -55,7 +61,7 @@
     var nowPath = '';
     var rootPath;
     var col = [
-        {field: 'title', title: '文件名称', event: 'rowClick'},
+        {field: 'title', title: '文件名称', event: 'rowClick',width:"25%"},
         {
             field: 'dir', title: '文件类型', event: 'rowClick', templet: function (d) {
                 if (d.dir) {
@@ -66,7 +72,7 @@
         },
         {field: 'size', title: '文件大小', event: 'rowClick'},
         {field: 'modifyTime', title: '修改时间', event: 'rowClick'},
-        {field: 'op', title: '操作', align: 'center', toolbar: '#bar_monitor', fixed: 'right'}
+        {field: 'op', title: '操作', align: 'center', toolbar: '#bar_monitor', fixed: 'right',width: "35%"}
     ];
 
     function loadSuccess() {

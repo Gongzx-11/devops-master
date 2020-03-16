@@ -22,7 +22,6 @@ import gzx.devops.plugin.ClassFeature;
 import gzx.devops.plugin.Feature;
 import gzx.devops.plugin.MethodFeature;
 import gzx.devops.service.node.ssh.SshService;
-import gzx.devops.util.CompressionFileUtil;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -183,15 +182,26 @@ public class SshFileController extends BaseServerController {
                 if (lsEntry.getAttrs().isDir()) {
                     jsonObject.put("dir", true);
                     jsonObject.put("title", lsEntry.getFilename() + "【文件夹】");
-                } else if (lsEntry.getAttrs().isDir()) {
+                } else if (lsEntry.getFilename().endsWith(".gz")) {
                     jsonObject.put("gz", true);
                     jsonObject.put("title", lsEntry.getFilename() + "【压缩包】");
-                }else if (lsEntry.getAttrs().isDir()) {
+                    long fileSize = lsEntry.getAttrs().getSize();
+                    jsonObject.put("size", FileUtil.readableFileSize(fileSize));
+                }else if (lsEntry.getFilename().endsWith(".tar")) {
                     jsonObject.put("gtar", true);
                     jsonObject.put("title", lsEntry.getFilename() + "【压缩包】");
-                }else if (lsEntry.getAttrs().isDir()) {
+                    long fileSize = lsEntry.getAttrs().getSize();
+                    jsonObject.put("size", FileUtil.readableFileSize(fileSize));
+                }else if (lsEntry.getFilename().endsWith(".rar")) {
                     jsonObject.put("rar", true);
                     jsonObject.put("title", lsEntry.getFilename() + "【压缩包】");
+                    long fileSize = lsEntry.getAttrs().getSize();
+                    jsonObject.put("size", FileUtil.readableFileSize(fileSize));
+                } else if (lsEntry.getFilename().endsWith(".zip")) {
+                    jsonObject.put("zip", true);
+                    jsonObject.put("title", lsEntry.getFilename() + "【压缩包】");
+                    long fileSize = lsEntry.getAttrs().getSize();
+                    jsonObject.put("size", FileUtil.readableFileSize(fileSize));
                 } else {
                     jsonObject.put("title", lsEntry.getFilename());
                     long fileSize = lsEntry.getAttrs().getSize();
