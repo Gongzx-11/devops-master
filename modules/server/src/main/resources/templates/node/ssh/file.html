@@ -49,11 +49,13 @@
     <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="download">下载</a>
     {{# } }}
 
-    {{# if(d.gz || d.tar || d.zip || d.rar){ }}
+    {{# if(d.zip){ }}
 <!--|| if(d.zip){ } || if(d.tar){ } || if(d.rar){ }-->
-    <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="compress">解压</a>
+    <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="compresszip">解压</a>
     {{# } }}
-<!--        <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="test">解压</a>-->
+    {{# if(d.gz || d.tar){ }}
+    <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-normal" lay-event="compressgz">解压</a>
+    {{# } }}
 </script>
 <script type="text/javascript">
     var id = getQueryString("id");
@@ -61,7 +63,7 @@
     var nowPath = '';
     var rootPath;
     var col = [
-        {field: 'title', title: '文件名称', event: 'rowClick',width:"25%"},
+        {field: 'title', title: '文件名称', event: 'rowClick',width:"25%",sort: true},
         {
             field: 'dir', title: '文件类型', event: 'rowClick', templet: function (d) {
                 if (d.dir) {
@@ -70,8 +72,8 @@
                 return '文件';
             }
         },
-        {field: 'size', title: '文件大小', event: 'rowClick'},
-        {field: 'modifyTime', title: '修改时间', event: 'rowClick'},
+        {field: 'size', title: '文件大小', event: 'rowClick' ,sort: true},
+        {field: 'modifyTime', title: '修改时间', event: 'rowClick' ,sort: true},
         {field: 'op', title: '操作', align: 'center', toolbar: '#bar_monitor', fixed: 'right',width: "35%"}
     ];
 
@@ -103,6 +105,7 @@
             if ('download' === event) {
                 // 下载
                 if (!data.dir) {
+                    //打开一个浏览器窗口
                     window.open("./download.html?id=" + id + "&path=" + rootPath + "&name=" + data.parentDir);
                 }
             } else if ('terminal' === event) {
@@ -114,7 +117,29 @@
                 tabChange({
                     id: id + tailPtah,
                     url: './node/ssh/terminal.html?id=' + id + "&tail=" + tailPtah,
-                    title: data.name + ' - 文件终端',
+                    title: data.name + ' -查看终端',
+                });
+            } else if ('compresszip' === event){
+                let parentDir = formatePath(data.parentDir);
+                var zipPtah = rootPath + parentDir;
+                if (!rootPath) {
+                    tailPtah = data.path;
+                }
+                tabChange({
+                    id: id + zipPtah,
+                    url: './node/ssh/terminal.html?id=' + id + "&zip=" + zipPtah,
+                    title: data.name + ' - zip解压终端',
+                });
+            } else if ('compressgz' === event){
+                let parentDir = formatePath(data.parentDir);
+                var gzPtah = rootPath + parentDir;
+                if (!rootPath) {
+                    gzPtah = data.path;
+                }
+                tabChange({
+                    id: id + gzPtah,
+                    url: './node/ssh/terminal.html?id=' + id + "&gz=" + gzPtah,
+                    title: data.name + ' - gz解压终端',
                 });
             } else if ('delete' === event) {
                 let path = rootPath;
