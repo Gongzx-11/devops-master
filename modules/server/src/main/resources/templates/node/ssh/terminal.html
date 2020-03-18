@@ -46,6 +46,10 @@
             var url = getSocketHost() + "/ssh?userId=[[${session.user.getUserMd5Key()}]]&" +
                 "sshId=[[${item?.id}]]&nodeId=system&type=ssh&" +
                 "gz=" + gz;
+        } else {
+            var url = getSocketHost() + "/ssh?userId=[[${session.user.getUserMd5Key()}]]&" +
+                "sshId=[[${item?.id}]]&nodeId=system&type=ssh&" +
+                "tail=" + tail;
         }
         var terminal = document.getElementById("#terminal");
         term = new window.Terminal({

@@ -82,7 +82,10 @@ public class SshHandler extends BaseHandler {
         //
         Thread.sleep(1000);
         //截取当前操作文件父路径
-        String fileLocalPath = fileDirAll.substring(0,fileDirAll.lastIndexOf("/"));
+        String fileLocalPath = null;
+        if (fileDirAll !=null && fileDirAll.lastIndexOf("/") > -1){
+            fileLocalPath = fileDirAll.substring(0,fileDirAll.lastIndexOf("/"));
+        }
 
         if (fileDirAll == null) {
             this.call(session, StrUtil.CR);
@@ -94,7 +97,7 @@ public class SshHandler extends BaseHandler {
         } else if (parameterMap.containsKey("zip")){
             //解压zip
             fileDirAll = FileUtil.normalize(fileDirAll);
-            this.call(session, StrUtil.format("unzip {} -d" + "{}", fileDirAll ,fileLocalPath));
+            this.call(session, StrUtil.format("unzip -o {} -d" + "{}", fileDirAll ,fileLocalPath));
             this.call(session, StrUtil.CR);
         }else if (parameterMap.containsKey("gz")){
             //解压 tar和tar.gz
