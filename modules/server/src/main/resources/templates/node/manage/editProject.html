@@ -41,7 +41,7 @@
                 <div class="layui-input-block">
                     <select name="group" lay-filter="group" th:disabled="${item?.outGivingProject}">
 
-                        <option th:each="i : ${groups}" th:value="${i}" th:selected="${item?.group==$i}"
+                        <option th:each="i : ${groups}" th:value="${i}" th:selected="${item?.group==i}"
                                 th:text="${i}"></option>
                         <option value="">选择手动添加</option>
                     </select>
@@ -111,6 +111,10 @@
                         if ([[${item?.runMode}]] === 'ClassPath') {
                             $("#mainClassDiv").show();
                         }
+                        if ([[${item?.runMode}]] === 'JavaExtDirsCp') {
+                            $("#mainClassDiv").show();
+                            $("#javaExtDirsCp").show();
+                        }
                         if ([[${item?.runMode}]] !== "File") {
                             $("#appInfoDiv").show();
                             $("#logInfoDiv").show();
@@ -129,6 +133,14 @@
                     <input th:readonly="${item?.outGivingProject}" type="text" name="mainClass"
                            placeholder="程序运行的 main 类(jar模式运行可以不填)" class="layui-input"
                            th:value="${item?.mainClass}">
+                </div>
+            </div>
+            <div class="layui-inline" style="display: none;" id="javaExtDirsCp">
+                <label class="layui-form-label">JavaExtDirsCp</label>
+                <div class="layui-input-block">
+                    <input th:readonly="${item?.outGivingProject}" type="text" name="javaExtDirsCp"
+                           placeholder="-Dext.dirs=xxx: -cp xx  填写【xxx:xx】如 lib:conf " class="layui-input"
+                           th:value="${item?.get('javaExtDirsCp')}">
                 </div>
             </div>
         </div>
@@ -161,7 +173,6 @@
                                th:value="${item?.token}">
                     </div>
                 </div>
-                <br>
                 <div class="layui-inline">
                     <label class="layui-form-label">JDK选择</label>
                     <div class="layui-input-block">
@@ -171,9 +182,10 @@
 <!--                                    th:selected="${item.get('jdkId')!=null &&  item.get('jdkId')==itemJdk.id}"-->
 <!--                                    th:text="${itemJdk.name}">-->
 <!--                            </option>-->
+<!--                            th:selected="${item?.get('jdkId')!=null &&  item?.get('jdkId')==itemJdk.id}"-->
                             <option value="" th:selected="#{item?.get('jdkId')==null}">请选择JDK</option>
                             <option th:each="itemJdk : ${jdkArray}" th:value="${itemJdk.id}"
-                                    th:selected="${item?.get('jdkId')!=null &&  item?.get('jdkId')==itemJdk.id}"
+                                    th:selected="${item?.get('jdkId')==itemJdk.id}"
                                     th:text="${itemJdk.name}">
                             </option>
                         </select>
@@ -216,7 +228,7 @@
                 data: data.field,
                 success: function (data) {
                     layer.msg(data.msg);
-                    if (200 == data.code) {
+                    if (200 === data.code) {
                         autoClose(group);
                     }
                 }
@@ -225,7 +237,7 @@
         });
         var selectGroup = $("select[name='group']");
         form.on('select(group)', function (data) {
-            if (data.value == "") {
+            if (data.value === "") {
                 layer.prompt({
                     title: '输入分组名，并确认',
                     formType: 0
@@ -249,6 +261,12 @@
                 $("#mainClassDiv").show();
             } else {
                 $("#mainClassDiv").hide();
+            }
+            if (val === "JavaExtDirsCp") {
+                $("#mainClassDiv").show();
+                $("#javaExtDirsCp").show();
+            } else {
+                $("#javaExtDirsCp").hide();
             }
             if (val === "File") {
                 $("#appInfoDiv").hide();

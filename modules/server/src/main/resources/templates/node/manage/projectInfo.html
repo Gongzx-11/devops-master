@@ -11,6 +11,20 @@
 
     <button onclick="reloadTable();" class="layui-btn layui-btn-sm">刷新表格</button>
 </div>
+<br>
+<div class="layui-collapse">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title" style="color: orangered">提示</h2>
+        <div class="layui-colla-content layui-show">
+            项目管理功能使用建议：
+            <br>1.先创建运行目录，建议目录层级大于三：如 /home/项目一主目录/项目一控制台日志目录/项目一的jar/war实际目录
+            <br>2.由于存在白名单安全管控，如上新增项目二时候其实目录不应在【项目一主目录】下，应当与其平级,如：
+            <br>  /home/项目二主目录/项目二控制台日志目录/项目二的jar/war实际目录
+            <br>3.受服务器编码影响，不建议使用或包含中文路径
+        </div>
+    </div>
+</div>
+<br>
 <table class="layui-table" id="tab_project" lay-filter="tab_project" style="margin: 0;"></table>
 
 <script type="text/html" id="bar_projects">

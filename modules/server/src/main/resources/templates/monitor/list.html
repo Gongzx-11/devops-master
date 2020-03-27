@@ -9,6 +9,17 @@
     <button id="addMonitor" class="layui-btn layui-btn-sm">新增监控</button>
     <button id="refresh" class="layui-btn layui-btn-sm">刷新表格</button>
 </div>
+<div class="layui-collapse">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title" style="color: orangered">提示</h2>
+        <div class="layui-colla-content layui-show">
+            监控管理目前只支持监控节点项目管理里面项目，只监控项目是否宕机
+            <br>若无报警监控人，则新增配置中不必配置
+            <br>启停项目维护时候记得临时关闭监控功能
+        </div>
+    </div>
+</div>
+<br>
 <table class="layui-table" id="tab_monitor" lay-filter="tab_monitor" style="margin: 0;"></table>
 
 </body>

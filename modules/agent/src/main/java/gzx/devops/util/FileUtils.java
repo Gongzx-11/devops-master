@@ -119,5 +119,7 @@ public class FileUtils {
         }
         return strings[1];
     }
-
+    public static String getJarSeparator() {
+        return SystemUtil.getOsInfo().isWindows() ? ";" : ":";
+    }
 }
