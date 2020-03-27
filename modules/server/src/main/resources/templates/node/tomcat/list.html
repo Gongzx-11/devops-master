@@ -4,15 +4,19 @@
 <head th:replace="common/head::head">
 </head>
 <body>
-<blockquote class="layui-elem-quote layui-quote-nm">
-    Tomcat实时日志监听功能未完善，日志管理可用来下载日志文件
-    Tomcat启动停止依赖于tomcat的端口，请检查待配置的Tomcat的如下端口是否为有效端口
-</blockquote>
-<br>
-<pre class="layui-code">//Tomcat的conf下面的server.xml
-     Server port="8556" shutdown="SHUTDOWN"
-     Listener className="org.apache.catalina.startup.VersionLoggerListener"
-      </pre>
+<div class="layui-collapse">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title" style="color: orangered">提示</h2>
+        <div class="layui-colla-content layui-show">
+            Tomcat管理功能使用建议：
+            <br>1.Windows下启动会存在控制台弹窗和cmd命令弹出，控制台弹窗关闭则Tomcat关闭，建议修改Tomcat的bin目录下：
+            <br>【setclasspath.bat】文件末尾81行左右的 【set _RUNJAVA="%JRE_HOME%\bin\java.exe"】
+            <br>==> 【set _RUNJAVA="%JRE_HOME%\bin\javaw.exe"】 则后台运行不弹出控制台弹窗，cmd弹窗可关闭
+            <br>2.Tomcat 管理功能还不健全，请生产环境谨慎使用，需测试环境多加测试
+            <br>3.Tomcat新增是指 配置服务器已有Tomcat信息，配置里面的 端口号实际是Tomcat的server.xml的端口配置
+        </div>
+    </div>
+</div>
 <div class="layui-row">
     <button onclick="editTomcat('');" class="layui-btn layui-btn-sm">添加Tomcat
     </button>
@@ -131,12 +135,12 @@
 <script type="text/html" id="toolbar_op">
     <a href="javascript:;" class="layui-btn  layui-btn-sm" lay-event="manage">管理</a>
 
-    {{# if (d.status == "stopped") { }}
-    <a href="javascript:;" class="layui-btn  layui-btn-sm" lay-event="start">启动</a>
-    {{# } else if (d.status == "running") { }}
-    <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-warm" lay-event="stop">停止</a>
-    <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-warm" lay-event="reload">重启</a>
-    {{# } }}
+<!--    {{# if (d.status == "stopped") { }}-->
+<!--    <a href="javascript:;" class="layui-btn  layui-btn-sm" lay-event="start">启动</a>-->
+<!--    {{# } else if (d.status == "running") { }}-->
+<!--    <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-warm" lay-event="stop">停止</a>-->
+<!--    <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-warm" lay-event="reload">重启</a>-->
+<!--    {{# } }}-->
     <a href="javascript:;" class="layui-btn  layui-btn-sm layui-btn-danger"
        lay-event="delete">删除</a>
 
